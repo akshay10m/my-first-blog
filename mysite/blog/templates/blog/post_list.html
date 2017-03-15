@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+{% load staticfiles %}
+
+<html>
+<head>
+	<title>My first Blog</title>
+	
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+	<link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="{% static 'css/blog.css' %}">
+</head>
+<body>
+	{% for each_post in posts %}
+		<div>
+		{% if each_post.date_published != None %}
+		<h1 class = 'page-header'>{{ each_post.title }}</h1>
+		{{ each_post.date_published }}
+			<br />
+			<p class = 'post'>{{ each_post.text | linebreaksbr }}</p>
+		</div>
+		{% endif %}
+	{% endfor %}
+<</body>
+</html>
